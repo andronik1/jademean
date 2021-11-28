@@ -1,11 +1,9 @@
 plugins {
-    id 'java'
+    id 'application'
 }
 
 group 'multiagent'
 version '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -15,6 +13,8 @@ repositories {
 }
 
 dependencies {
-    compile group: 'com.tilab.jade', name: 'jade', version: '4.5.0'
+    implementation files("lib/jade-4.5.0.jar")
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+mainClassName = "ru.spbu.App"
