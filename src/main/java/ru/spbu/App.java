@@ -1,58 +1,8 @@
 package ru.spbu;
 
-import jade.core.Profile;
-import jade.core.ProfileImpl;
-import jade.core.Runtime;
-import jade.wrapper.AgentController;
-import jade.wrapper.ContainerController;
-
-import java.util.*;
-
 public class App {
-    private static Map<Integer, List<String>> graph = new HashMap<Integer, List<String>>() {{
-        put(1, listOf("7", "10"));
-        put(2, listOf("3", "5", "7"));
-        put(3, listOf("2", "8"));
-        put(4, listOf("7", "10"));
-        put(5, listOf("2"));
-        put(6, listOf("9"));
-        put(7, listOf("1", "2", "4"));
-        put(8, listOf("3"));
-        put(9, listOf("6", "10"));
-        put(10, listOf("1", "9"));
-    }};
-
     public static void main(String[] args) {
-        Runtime rt = Runtime.instance();
-        //Create a container to host the Default Agent
-        Profile p = new ProfileImpl();
-        p.setParameter(Profile.MAIN_HOST, "localhost");
-        p.setParameter(Profile.MAIN_PORT, "10098");
-        p.setParameter(Profile.GUI, "true");
-        ContainerController cc = rt.createMainContainer(p);
-
-        try {
-            for (int i = 1; i <= graph.size(); i++) {
-                AgentController agent = cc.createNewAgent(
-                        Integer.toString(i), AgentWithNumber.class.getName(), toArgs(graph.size(), graph.get(i))
-                );
-                agent.start();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    private static List<String> listOf(String... args) {
-        return new ArrayList<>(Arrays.asList(args));
-    }
-
-    private static String[] toArray(List<String> args) {
-        return args.toArray(new String[0]);
-    }
-
-    private static String[] toArgs(Integer nodesCount, List<String> neighbours) {
-        neighbours.add(String.valueOf(nodesCount));
-        return toArray(neighbours);
+        MainController mc = new MainController();
+        mc.initAgents();
     }
 }

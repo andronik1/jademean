@@ -2,7 +2,7 @@
 
 ### Algorithm
 
-Every agent sends each other all the info it knows. Then every agents is waiting for the messages from the other agents. This continues until all the information is received by every agent. Mean value is calculated by each agent independently.
+Every agent sends each other all the info it knows. Then every agents is waiting for the messages from the other agents. This continues until all the information is received by every agent. Mean value is calculated by each agent independently. Also, Local Voting protocol is implemented.
 
 ### Estimation
 
