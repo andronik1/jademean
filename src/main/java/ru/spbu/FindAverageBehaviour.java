@@ -12,7 +12,7 @@ import jade.lang.acl.ACLMessage;
 public class FindAverageBehaviour extends TickerBehaviour {
     private final DefaultAgent agent;
     private int currentStep;
-    private final int MAX_STEPS = 20;
+    private final int MAX_STEPS = 100;
 
     FindAverageBehaviour(DefaultAgent agent, long period) {
         super(agent, period);
@@ -60,7 +60,7 @@ public class FindAverageBehaviour extends TickerBehaviour {
             }
 
             // step size
-            float a = 1f / (1f + (float) neighbors_n);
+            float a = 0.2f;
 
             // value update
             float current_number = this.agent.getNumber() + a * (sum_neighbours -  amount * this.agent.getNumber());
